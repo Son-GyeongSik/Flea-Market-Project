@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <title>Flea Market - Home</title>
+    
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbars/">
+        <!-- <link href="../static/bootstrap.min.css" rel="stylesheet"> -->
+        <link href="{{ url_for('static', path='/common.css') }}" rel="stylesheet">
+
+        <script>
+          function update_product_list(products) {
+            $("#product_list").empty();
+            products.forEach(item => {
+              $("#product_list").append("<div id='product_grid_element'> \
+                <p>"+item.name+"</p>\
+                <p>"+item.price+"원</p> </div>");
+            });
+          }
+
+          function get_product_list() {
+            $.getJSON("/get_product", update_product_list);
+          }
+
+          $(document).ready(function () {
+            get_product_list();
+          })
+        </script>
+        
+    </head>
+    
+    <body>
+      
+      <div id="upper_bar">
+        <a href = "/logout" style="text-decoration: none;">로그아웃</a>
+      </div>
+
+      <div style="width: 300px; margin:auto; text-align: center;">
+        <img src="{{ url_for('static', path='/logo.png')}}" style="max-width: 100px;">
+        <h2>SKKU FLEA MARKET</h2>
+      </div>
+
+      <div id="search_field">
+        <input type="text" id="search_input">
+        <button id="search_submit">SEARCH</button>
+      </div>
+
+      <div id="product_list">
+        
+      </div>
+    </body>
+</html>

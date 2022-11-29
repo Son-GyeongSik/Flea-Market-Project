@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="{{ url_for('static', path='/common.css') }}" rel="stylesheet">
+
+        <script>
+             $(document).ready(function () {
+                var id = 1
+                $("#upper_bar").append("<p>"+id+"</p>");
+             })
+        </script>
+    </head>
+
+    <body>
+        <div id="upper_bar">
+            <a href = "/logout" style="text-decoration: none;">로그아웃</a>
+        </div>
+        <div id="product_detail_box">
+            <div id="product_image_area">
+                이미지
+            </div>
+
+            <div id="product_text_area">
+                <h1>상품명</h1>
+                <h3>현재 가격 : 5000원</h3>
+                <br>
+                <p>입찰가격 제시</p>
+                <input type="number">
+                <input type="submit" value="제시">
+                <button>위시리스트 추가</button>
+                <hr>
+
+                <p>상품설명</p>
+            </div>
+        </div>
+
+    </body>
+</html>

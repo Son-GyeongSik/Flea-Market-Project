@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Flea Market - Login</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
+    <link href="{{ url_for('static', path='/bootstrap.min.css') }}" rel="stylesheet">
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', path='/signin.css') }}" rel="stylesheet">
+
+    <script>
+      $(document).ready(function () {
+          $("#btn_submit").click(function (event) {
+              var username = $("#username").val()
+              var password = $("#password").val()
+
+              var data = { "username": username, "password": password};
+              $.ajax({
+                  url: "/token",
+                  type: "post",
+                  data: data,
+                  success: function (data, txtStatus, xhr) {
+                      window.location = "/main";
+                  }
+              });
+          });
+      });
+    </script>
+
+  </head>
+  <body class="text-center">    
+    <main class="form-signin w-100 m-auto">
+      <form>
+        <img src="{{ url_for('static', path='/logo.png')}}" alt="" width="200" height="200" style="margin-bottom: 20px;">
+      
+        <div class="form-floating">
+          <input type="text" class="form-control" id="username" placeholder="ID">
+          <label for="floatingInput">ID</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" id="btn_submit" type="submit">로그인</button>
+      </form>
+      
+      <a href="#" style="margin-top: 20px;">아직 회원이 아니신가요?</a>
+    </main>
+  </body>
+</html>
